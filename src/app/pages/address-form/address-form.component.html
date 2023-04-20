@@ -1,1 +1,74 @@
-<p>address-form works!</p>
+<div class="wrapper">
+    <form >
+        <mat-form-field appearance="fill">
+            <mat-label>Name:</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="Name"
+              placeholder="Name"
+              required
+            />
+          </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Address:</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="Address"
+              placeholder="Address"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Zipcode:</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="zipcode"
+              placeholder="Zipcode"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>State:</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="state"
+              placeholder="State"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Country:</mat-label>
+              <mat-select>
+                  <mat-option *ngFor="let country of countries" [value]="country[0]">
+                      {{country}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Phone:</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="phone"
+                placeholder="Phone"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email:</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="email"
+                placeholder="Email@website.com"
+                required
+              />
+            </mat-form-field>
+            
+            
+        </form>
+    </div>
