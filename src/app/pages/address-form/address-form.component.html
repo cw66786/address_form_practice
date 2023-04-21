@@ -1,11 +1,11 @@
 <div class="wrapper">
-    <form >
+    <form class="address-form" [formGroup]="addressForm">
         <mat-form-field appearance="fill">
             <mat-label>Name:</mat-label>
             <input
               type="text"
               matInput
-              formControlName="Name"
+              formControlName="name"
               placeholder="Name"
               required
             />
@@ -15,7 +15,7 @@
             <input
               type="text"
               matInput
-              formControlName="Address"
+              formControlName="address"
               placeholder="Address"
               required
             />
@@ -42,11 +42,15 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
               <mat-label>Country:</mat-label>
-              <mat-select>
-                  <mat-option *ngFor="let country of countries" [value]="country[0]">
+              <mat-select required formControlName="countries" >
+                
+                    <mat-option *ngFor="let country of countries" [value]="country">
                       {{country}}
                     </mat-option>
-                </mat-select>
+                  </mat-select>
+                  
+                    
+                
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Phone:</mat-label>
@@ -69,6 +73,6 @@
               />
             </mat-form-field>
             
-            
+            <button mat-raised-button  [disabled]="!addressForm.valid">Submit</button>
         </form>
     </div>
