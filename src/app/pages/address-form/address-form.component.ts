@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,10 +6,16 @@ import {
   Validators,
 } from '@angular/forms';
 
-// interface Country {
-//   value: string;
-//   viewValue: string;
-// }
+interface formInterface {
+   name: string;
+   address: string;
+   zipcode: string;
+   state: string;
+   country: string;
+   phone: string;
+   email: string;
+
+ }
 
 
 @Component({
@@ -18,6 +24,9 @@ import {
   styleUrls: ['./address-form.component.scss']
 })
 export class AddressFormComponent implements OnInit {
+  @Output()
+  formInfo!: formInterface;
+
   countries: string[] = [' Indian', 'England', 'Singapore','USA'];
   addressForm!: FormGroup;
  
@@ -36,4 +45,17 @@ export class AddressFormComponent implements OnInit {
     });
   }
 
+  formSubmit(){
+   
+     this.formInfo = {
+      name: this.addressForm.get('name')?.value,
+      address: this.addressForm.get('address')?.value,
+      zipcode: this.addressForm.get('zipcode')?.value,
+      state: this.addressForm.get('state')?.value,
+      country: this.addressForm.get('country')?.value,
+      phone: this.addressForm.get('phone')?.value,
+      email: this.addressForm.get('email')?.value,
+     }
+   
+  }
 }
