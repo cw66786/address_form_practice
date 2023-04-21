@@ -9,7 +9,15 @@ import { formObject } from 'src/form-object';
 export class AppComponent {
   title = 'address_form';
 
-  
+  defaultFormData: formObject = {
+    name: 'Luke are you actually checking this?????',
+    address: '1234 Antra Ave',
+    zipcode: '12345',
+    state: 'Unknown',
+    country: 'USA',
+    phone: '1231233333',
+    email: 'luke@antra.com',
+  };
 
   formInfo!: formObject | null;
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,6 +16,9 @@ import { formObject } from 'src/form-object';
   styleUrls: ['./address-form.component.scss']
 })
 export class AddressFormComponent implements OnInit {
+  @Input() 
+  existingFormData!: formObject;
+  
   @Output()
   sendFormInfo = new EventEmitter<formObject>();
 
@@ -36,6 +39,22 @@ export class AddressFormComponent implements OnInit {
       phone: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
     });
+
+
+    
+      this.addressForm.setValue({
+        name: this.existingFormData.name,
+        address: this.existingFormData.address,
+        zipcode: this.existingFormData.zipcode,
+        state: this.existingFormData.state,
+        countries: this.existingFormData.country,
+        phone: this.existingFormData.phone,
+        email: this.existingFormData.email
+        
+      })
+    
+
+
   }
 
   formSubmit(){
