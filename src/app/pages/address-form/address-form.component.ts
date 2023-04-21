@@ -1,21 +1,13 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { formObject } from 'src/form-object';
 
-interface formInterface {
-   name: string;
-   address: string;
-   zipcode: string;
-   state: string;
-   country: string;
-   phone: string;
-   email: string;
 
- }
 
 
 @Component({
@@ -25,10 +17,11 @@ interface formInterface {
 })
 export class AddressFormComponent implements OnInit {
   @Output()
-  formInfo!: formInterface;
+  sendFormInfo = new EventEmitter<formObject>();
 
   countries: string[] = [' Indian', 'England', 'Singapore','USA'];
   addressForm!: FormGroup;
+  formInfo!: formObject;
  
   constructor(private fb: FormBuilder) { }
   
@@ -52,10 +45,12 @@ export class AddressFormComponent implements OnInit {
       address: this.addressForm.get('address')?.value,
       zipcode: this.addressForm.get('zipcode')?.value,
       state: this.addressForm.get('state')?.value,
-      country: this.addressForm.get('country')?.value,
+      country: this.addressForm.get('countries')?.value,
       phone: this.addressForm.get('phone')?.value,
       email: this.addressForm.get('email')?.value,
-     }
+     };
+
+     this.sendFormInfo.emit(this.formInfo);
    
   }
 }

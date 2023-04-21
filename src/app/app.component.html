@@ -1,1 +1,15 @@
-<app-address-form></app-address-form>
+<div class="wrapper">
+
+    <app-address-form (sendFormInfo)="receiveFormInfo($event)"></app-address-form>
+    <div *ngIf="this.formInfo" class="display-info">
+        <h2>{{formInfo.name}}</h2>
+        <ul>
+            <li>{{formInfo.address}}</li>
+            <li>{{formInfo.zipcode}}</li>
+            <li>{{formInfo.state}}</li>
+            <li>{{formInfo.country}}</li>
+            <li>{{formInfo.phone}}</li>
+            <li>{{formInfo.email}}</li>
+        </ul>
+    </div>
+</div>

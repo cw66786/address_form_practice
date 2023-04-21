@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { formObject } from 'src/form-object';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'address_form';
+
+  
+
+  formInfo!: formObject | null;
+
+  receiveFormInfo($event: any){
+    this.formInfo = $event;
+    
+  }
+
 }
